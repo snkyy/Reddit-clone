@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+sourceCompatibility = 11
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.xerial:sqlite-jdbc:3.36.0.1'
+    implementation 'org.eclipse.jetty:jetty-server:11.0.6'
+    implementation 'org.eclipse.jetty:jetty-servlet:11.0.6'
+    implementation 'org.freemarker:freemarker:2.3.31'
+
+    runtimeOnly 'org.slf4j:slf4j-simple:1.8.+'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.+'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.+'
+    testImplementation 'org.assertj:assertj-core:3.+'
+    testImplementation 'org.mockito:mockito-core:3.+'
+
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+    testCompileOnly 'org.projectlombok:lombok:1.18.20'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
+}
+
+application {
+    mainClass = 'impl.Program'
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
